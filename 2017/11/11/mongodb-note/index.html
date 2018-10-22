@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MongoDB,数据库," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="抬头看路,低头干活" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="关系型数据库 Mysql、SqlServer、Oracle 非关系型数据库(Nosql not only sql) Redis、MongoDB、HBase、BigTable、CouchDB、Neo4j 结构化的数据：固定的长度、固定的类型、固定的格式。非结构化的数据：avi，ppt，doc 非关系型数据库的优点： 1. 简单的扩展 2. 快速的读写 3. 低廉的成本 4. 灵活的数据模型 非关系型">
+<meta name="keywords" content="MongoDB,数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb数据库学习">
+<meta property="og:url" content="http://hanwen.me/2017/11/11/mongodb-note/index.html">
+<meta property="og:site_name" content="抬头看路,低头干活">
+<meta property="og:description" content="关系型数据库 Mysql、SqlServer、Oracle 非关系型数据库(Nosql not only sql) Redis、MongoDB、HBase、BigTable、CouchDB、Neo4j 结构化的数据：固定的长度、固定的类型、固定的格式。非结构化的数据：avi，ppt，doc 非关系型数据库的优点： 1. 简单的扩展 2. 快速的读写 3. 低廉的成本 4. 灵活的数据模型 非关系型">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-30T14:13:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb数据库学习">
+<meta name="twitter:description" content="关系型数据库 Mysql、SqlServer、Oracle 非关系型数据库(Nosql not only sql) Redis、MongoDB、HBase、BigTable、CouchDB、Neo4j 结构化的数据：固定的长度、固定的类型、固定的格式。非结构化的数据：avi，ppt，doc 非关系型数据库的优点： 1. 简单的扩展 2. 快速的读写 3. 低廉的成本 4. 灵活的数据模型 非关系型">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hanwen.me/2017/11/11/mongodb-note/"/>
+
+
+
+
+
+  <title>mongodb数据库学习 | 抬头看路,低头干活</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">抬头看路,低头干活</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/11/mongodb-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hanwen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抬头看路,低头干活">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mongodb数据库学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-11T21:53:54+08:00">
+                2017-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/11/mongodb-note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/11/mongodb-note/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>关系型数据库</p>
+<pre><code>Mysql、SqlServer、Oracle
+</code></pre><p>非关系型数据库(Nosql not only sql)</p>
+<pre><code>Redis、MongoDB、HBase、BigTable、CouchDB、Neo4j
+</code></pre><p>结构化的数据：固定的长度、固定的类型、固定的格式。非结构化的数据：avi，ppt，doc</p>
+<p>非关系型数据库的优点：</p>
+<pre><code>1. 简单的扩展
+2. 快速的读写
+3. 低廉的成本
+4. 灵活的数据模型
+</code></pre><p>非关系型数据库的不足之处：</p>
+<pre><code>1. 不提供对SQL的支持
+2. 支持的特性不够丰富
+3. 现有的产品不够成熟
+</code></pre><a id="more"></a>
+<p>MongoDB是用C++语言编写的非关系型数据库。特点是高性能、易部署、易使用，存储数据十分方便，主要特性有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">面向集合存储，易于存储对象类型的数据</div><div class="line">模式自由</div><div class="line">支持动态查询</div><div class="line">支持完全索引，包含内部对象</div><div class="line">支持复制和故障恢复</div><div class="line">使用高效的二进制数据存储，包括大型对象</div><div class="line">文件存储格式为BSON(一种JSON的扩展)</div></pre></td></tr></table></figure></p>
+<p>MongoDB几本概念介绍<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">文档(document)是MongoDB中数据的基本单元，非常类似于关系型数据库系统中的行(但是比行要复杂的多)</div><div class="line">集合(collection)就是一组文档，如果说MongoDB中的文档类似于关系型数据库中的行，那么集合就如同表</div><div class="line">MongoDB的单个计算机可以容纳多个独立的数据库，每一个数据库都有自己的集合和权限</div><div class="line">MongoDB自带简洁但功能强大的JavaScript shell，这个工具对于管理MongoDB实例和操作数据作用非常大</div><div class="line">每一个文档都有一个特殊的键&quot;_id&quot;,它在文档所处的集合中是唯一的，相当于关系数据库中的表的主键</div></pre></td></tr></table></figure></p>
+<p>MongoDB数据类型</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>描述</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>表示空值或者未定义的对象</td>
+<td>{“x”:null}</td>
+</tr>
+<tr>
+<td>布尔值</td>
+<td>真或者假：true或者false</td>
+<td>{“x”:true}</td>
+</tr>
+<tr>
+<td>32位整数</td>
+<td>32位整数。</td>
+<td>shell是不支持该类型的，shell中默认会转换成64位浮点数      </td>
+</tr>
+<tr>
+<td>64位整数</td>
+<td>64位整数。</td>
+<td>shell是不支持该类型的，shell中默认会转换成64位浮点数      </td>
+</tr>
+<tr>
+<td>64位浮点数</td>
+<td>64位浮点数。</td>
+<td>shell中的数字就是这一种类型           {“x”：3.14，”y”：3}</td>
+</tr>
+<tr>
+<td>字符串</td>
+<td>UTF-8字符串</td>
+<td>{“foo”:”bar”}</td>
+</tr>
+<tr>
+<td>符号</td>
+<td></td>
+<td>shell不支持，shell会将数据库中的符号类型的数据自动转换成字符串      </td>
+</tr>
+<tr>
+<td>对象id</td>
+<td>文档的12字节的唯一id</td>
+<td>{“id”: ObjectId()}</td>
+</tr>
+<tr>
+<td>日期</td>
+<td>从标准纪元开始的毫秒数</td>
+<td>{“date”:new Date()}</td>
+</tr>
+<tr>
+<td>正则表达式</td>
+<td>文档中可以包含正则表达式，遵循JavaScript的语法</td>
+<td>{“foo”:/foobar/i}</td>
+</tr>
+<tr>
+<td>代码</td>
+<td>文档中可以包含JavaScript代码</td>
+<td>{“x”：function() {}}     </td>
+</tr>
+<tr>
+<td>未定义</td>
+<td>undefined</td>
+<td>{“x”：undefined}</td>
+</tr>
+<tr>
+<td>数组</td>
+<td>值的集合或者列表</td>
+<td>{“arr”: [“a”,”b”]}</td>
+</tr>
+<tr>
+<td>内嵌文档</td>
+<td>文档可以作为文档中某个key的value</td>
+<td>{“x”:{“foo”:”bar”}}</td>
+</tr>
+</tbody>
+</table>
+<p>为何要用非关系型数据库<br>&emsp;&emsp;在关系型数据库当中为某一个记录扩展一个字段方便吗？不方便，必须要改表结构.在非关系型数据库中，它的结构不固定，每条记录可以有不一样的键，每条记录可以根据需要增加一些自己的键值对</p>
+<p>mongodb的安装</p>
+<pre><code>将mongodb根目录下bin的路径加到环境变量中即可。
+</code></pre><p>启动mongodb</p>
+<pre><code>1. 新建一个mongodb的数据存放路径
+2. mongod --dbpath=存放路径 (=号两边不要有空格)
+</code></pre><p>默认占用一个端口对外提供服务（默认端口27017）</p>
+<p>客户端连接，默认情况连接是不需要认证的，直接在命令行或者终端中输入下面命令，就可以连接到mongodb的服务器端</p>
+<pre><code>mongo ip:port
+</code></pre><p>新建数据库和删除数据库</p>
+<pre><code>use xxx    //新建数据库
+db.dropDatabase()     //删除当前数据库
+</code></pre><p>查看所有数据库和查看当前数据库</p>
+<pre><code>show dbs    //查看所有数据库
+db             //当前数据库
+</code></pre><p>查看当前数据库中所有的集合</p>
+<pre><code>show collections or show tables
+</code></pre><p>新建集合的两种方式，第一种隐式创建</p>
+<pre><code>//在创建集合的同时往集合里面添加数据
+db.c1.insert({name:&quot;zhangsan&quot;, age:1});
+</code></pre><p>第二种显示创建</p>
+<pre><code>db.createCollection(); 
+</code></pre><p>向集合中插入数据</p>
+<pre><code>db.collectionName.insert({key:value, key:value})
+</code></pre><p>删除集合中的文档</p>
+<pre><code>db.collectionName.remove({删除条件})    //若不加删除条件为删除集合中的所有文档
+</code></pre><p>查询集合中的文档</p>
+<pre><code>db.collectionName.find({查询条件})
+db.collectionName.findOne()
+//查询集合中的文档，返回某些特定的键值，0表示返回不包含该key的所有列，若是1表示返回该key字段
+db.collectionName.find({查询条件}, {key:0})    
+//注：_id字段始终都会被返回，哪怕没有明确指定
+</code></pre><p>查询集合中的文档，使用条件表达式(&lt;, &lt;=, &gt;, &gt;=, !=)</p>
+<pre><code>//大于： field &gt; value
+db.collection.find({field:{$gt:value}});
+
+//小于： field &lt; value
+db.collection.find({field:{$lt:value}});
+
+//大于等于： field &gt;= value
+db.collection.find({field:{$gte:value}});
+
+//小于等于： field &lt;= value
+db.collection.find({field:{$lte:value}});
+
+//不等于：  field != value
+db.collection.find({field:{$ne:value}});
+</code></pre><p>查询集合中的文档，统计(count)、排序(sort)、分页(skip, limit)</p>
+<pre><code>db.collectionName.count();
+db.collectionName.find().count();
+db.collectionName.find({age:{$lt:5}}).count();
+db.collectionName.find().sort({age:1}); 降序-1
+db.collectionName.find().skip(2).limit(3);
+db.collectionName.find().sort({age:-1}).skip(2).limit(3);
+db.collectionName.find().sort({age:-1}).skip(2).limit(3).count();
+db.collectionName.find().sort({age:-1}).skip(2).limit(3).count(0);
+db.collectionName.find().sort({age:-1}).skip(2).limit(3).count(1);
+</code></pre><p>查询集合中的文档 ,$all主要用来查询数组中的包含关系，查询条件中只要有一个不包含就不返回</p>
+<p>查询集合中的文档 ,$in，类似于关系型数据库中的IN</p>
+<p>查询集合中的文档 ,$nin，与$in相反</p>
+<p>查询集合中的文档 ,$or，相当于关系型数据库中的OR，表示或者的关系，例如查询name为user2或者age为3的文档，命令为：</p>
+<pre><code>db.collectionName.find({$or:[{name:”user2”},{age:3}]})
+</code></pre><p>查询集合中的文档 ,$nor，表示根据条件过滤掉某些数据，例如查询name不是user2，age不是3的文档，命令为：</p>
+<pre><code>db.collectionName.find({$nor:[{name:”user2”},{age:3}]})
+</code></pre><p>查询集合中的文档 ,$exists，用于查询集合中存在某个键的文档或不存在某个键的文档，例如查询customer集合中存在name键的所有文档，可以使用 </p>
+<pre><code>//$exists:1表示真，指存在
+//$exists:0表示假，指不存在
+db.customer.find({name:{$exists:1}})，
+</code></pre><p>更新集合中的文档</p>
+<pre><code>//criteria:用于设置查询条件的对象
+//objNew:用于设置更新内容的对象
+//upsert:如果记录已经存在，更新它，否则新增一个记录，取值为0或1
+//multi：如果有多个符合条件的记录，是否全部更新，取值为0或1
+db.collection.update(criteria, objNew, upsert, multi)
+</code></pre><p>注意：默认情况下，只会更新第一个符合条件的记录一般情况下后两个参数分别为0,1 ，即：</p>
+<pre><code>db.collection.update(criteria,objNew,0,1)
+</code></pre><p>更新集合中的文档, $set 用来指定一个键的值，如果这个键不存在，则创建它。例如：给name为user1的文档添加address，可以使用命令：</p>
+<pre><code>db.c1.update({name:”user1”},{$set:{address:”bj”}},0,1)
+</code></pre><p>将name为user1的文档修改address为tj，其它键值对不变,命令为：</p>
+<pre><code>db.c1.update({name:”user1”},{$set:{address:”tj”}},0,1)
+</code></pre><p>更新集合中的文档,使用 $inc 将集合中name为user1的age加1，其它键不变, $inc表示使某个键值加减指定的数值</p>
+<pre><code>db.c1.update({name:”user1”},{$inc:{age:1}})
+</code></pre><p>更新集合中的文档, $unset 用来删除某个键，例如删除name为user1的文档中的address键，可以使用命令：</p>
+<pre><code>db.collectionName.update({name:”user1”},{$unset:{address:1}},0,1)
+</code></pre><p>索引就是用来加速查询的。数据库索引与书籍的索引类似：有了索引就不需要翻遍整本书，数据库则可以直接在索引中查找，使得查找速度能提高几个数量级。在索引中找到条目以后，就可以直接跳转到目标文档的位置。</p>
+<pre><code>//创建普通索引
+db.collection.ensureIndex({key:1})
+//查看关于索引的相关信息
+db.collection.stats()
+//查看查询使用索引的情况
+db.collection.find({key:value}).explain()
+//删除索引
+db.collection.dropIndex({key:1})
+//删除集合，也会将集合中的索引全部删除
+
+//创建唯一索引
+db.collection.ensureIndex({key:1}，{unique:true})
+//查看关于索引的相关信息
+db.collection.stats()
+//查看查询使用索引的情况
+db.collection.find({key:value}).explain()
+//删除索引
+db.collection.dropIndex({key:1})
+//删除集合，也会将集合中的索引全部删除
+</code></pre><p>固定集合指的是事先创建而且大小固定的集合。固定集合特性：固定集合很像环形队列，如果空间不足，最早的文档就会被删除，为新的文档腾出空间。一般来说，固定集合适用于任何想要自动淘汰过期属性的场景，没有太多的操作限制。创建固定集合使用命令</p>
+<pre><code>//size指定集合大小，单位为KB，max指定文档的数量 
+db.createCollection(“collectionName”,{capped:true,size:100000,max:100});  
+</code></pre><p>当指定文档数量上限时，必须同时指定大小。淘汰机制只有在容量还没有满时才会依据文档数量来工作。要是容量满了，淘汰机制会依据容量来工作。 </p>
+<p>备份(mongodump)和恢复(mongorestore)<br>MongoDB提供了备份和恢复的功能，分别是MongoDB下载目录下的mongodump.exe和mongorestore.exe文件,备份数据使用下面的命令：</p>
+<pre><code>//-h：MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017
+//-d：需要备份的数据库实例，例如：test
+//-o：备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据。
+mongodump -h dbhost -d dbname -o dbdirectory
+</code></pre><p>恢复数据使用下面的命令：</p>
+<pre><code>//-h：MongoDB所在服务器地址
+//-d：需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2
+//-directoryperdb：备份数据所在位置，例如：c:\data\dump\test
+mongorestore -h dbhost -d dbname -directoryperdb dbdirectory
+</code></pre><p>导入(mongoimport)和导出(mongoexport)<br>导出数据可以使用命令</p>
+<pre><code>//-h 数据库地址
+//-d 指明使用的库
+//-c 指明要导出的集合
+//-o 指明要导出的文件名
+mongoexport -h dbhost -d dbname -c collectionName -o output
+</code></pre><p>导入数据可以使用命令：</p>
+<pre><code>//-h 数据库地址
+//-d 指明使用的库
+//-c 指明要导入的集合
+mongoimport -h dbhost -d dbname -c collectionname 文件的地址...
+</code></pre><p>安全和认证<br>每个MongoDB实例中的数据库都可以有许多用户。如果开启了安全性检查，则只有数据库认证用户才能执行读或者写操作。在认证的上下文中，MongoDB会将普通的数据作为admin数据库处理。admin数据库中的用户被视为超级用户(即管理员)。在认证之后，管理员可以读写所有数据库，执行特定的管理命令，如listDatabases和shutdown。在开启安全检查之前，一定要至少有一个管理员账号。</p>
+<p>在admin数据库中创建管理员账号：</p>
+<pre><code>use admin;
+db.addUser(“root”,”root”);
+</code></pre><p>在test数据库中创建普通账号：</p>
+<pre><code>use test;
+db.addUser(“zhangsan”,”123”);
+db.addUser(“lisi”,”123”,true);
+</code></pre><p>注意：用户zhangsan，密码为123，对test数据库拥有读写权限，用户lisi，密码为123，对test数据库拥有只读权限</p>
+<p>重新启动数据库服务，并开启安全检查</p>
+<pre><code>mongod --dbpath d:\mongo_data --auth
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Hanwen 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
+            <a href="/tags/数据库/" rel="tag"># 数据库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/10/oracle-other-note/" rel="next" title="Oracle存储函数、触发器、闪回">
+                <i class="fa fa-chevron-left"></i> Oracle存储函数、触发器、闪回
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/12/mongodb-master-slave/" rel="prev" title="mongodb主从复制集群">
+                mongodb主从复制集群 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Hanwen" />
+            
+              <p class="site-author-name" itemprop="name">Hanwen</p>
+              <p class="site-description motion-element" itemprop="description">公众号「funnyZhang」</br>后端•职场•思维</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhanwen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Hanwen520" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/hanwen521" target="_blank" title="FaceBook">
+                    
+                      <i class="fa fa-fw fa-facebook"></i>FaceBook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/hanwen521" target="_blank" title="Weibo">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hanwen</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://hanwen.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://hanwen.me/2017/11/11/mongodb-note/';
+          this.page.identifier = '2017/11/11/mongodb-note/';
+          this.page.title = 'mongodb数据库学习';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://hanwen.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
