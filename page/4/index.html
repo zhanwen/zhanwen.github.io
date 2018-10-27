@@ -298,6 +298,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/21/linux-dump-tool/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hanwen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抬头看路,低头干活">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/21/linux-dump-tool/" itemprop="url">linux抓包工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-21T22:50:05+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/21/linux-dump-tool/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/21/linux-dump-tool/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>linux 抓包工具</p>
+<pre><code>1、tcpdump系统自带抓包工具    
+
+//-nn表示让第三列和第四列显示成ip+端口号的实行。 
+//-i 后跟设备名
+2、tcpdump -nn -i eth0 tcp and host 192.168.0.1 and port 80
+
+vs0不限定包的长度
+-c 只抓多少包
+-w更文件，抓的包写到的文件
+3、tcpdump -nn -vs0 tcp and port not 22 -c 100 -w 1.cap
+</code></pre><p>4、wireshark 在linux下也可以安装</p>
+<pre><code>yum install -y wireshark
+</code></pre><p>5、抓包分析http请求：</p>
+<pre><code>tshark -n -t a -R http.request -T fields -e &quot;frame.time&quot; -e &quot;ip.src&quot; -e &quot;http.host&quot; -e &quot;http.request.method&quot; -e &quot;http.request.ri&quot;
+</code></pre><p>抓取之后，会有一个文件，在 /tmp/etherXXXXevWMie 每次抓取之后最后最好删除，</p>
+<pre><code>/tmp/etherXXXXevWMie |xargs rm
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/20/linux-common-tools/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1552,152 +1699,6 @@ wget http://apache.etoak.com/httpd/httpd-2.2.24.tar.bz2
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/16/rpm-study-note/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hanwen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="抬头看路,低头干活">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/16/rpm-study-note/" itemprop="url">rpm工具的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T21:00:47+08:00">
-                2017-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/16/rpm-study-note/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/16/rpm-study-note/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>先介绍一下rpm包名字的构成，是由-和.分成了若干部分分，如：</p>
-<pre><code>abrt-cli-2.0.8.15.el6.centos.i686.rpm
-</code></pre><p>rpm包并没有写具体的平台而是noarch这代表这个rpm包没有硬件平台限制。</p>
-<p>安装一个包</p>
-<pre><code>-i表示安装
--v可视化
--h显示安装进度
--force：强制安装，即使覆盖属于其它包的文件也要安装
--nodeps：当要安装的rpm包依赖其他包时，即使其他包没有安装，也要安装这个包
-
-rpm -ivh /mnt/Package/libjpeg-turbo-devel-1.2.1-1.el6.i686.rpm
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/16/rpm-study-note/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1752,7 +1753,7 @@ rpm -ivh /mnt/Package/libjpeg-turbo-devel-1.2.1-1.el6.i686.rpm
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">84</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1774,7 +1775,7 @@ rpm -ivh /mnt/Package/libjpeg-turbo-devel-1.2.1-1.el6.i686.rpm
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
