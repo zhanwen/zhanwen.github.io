@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hanwen.me/"/>
-  <updated>2018-10-27T04:21:16.871Z</updated>
+  <updated>2018-12-26T12:27:56.134Z</updated>
   <id>http://hanwen.me/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>闲聊 | 读书</title>
+    <link href="http://hanwen.me/2018/12/26/recommend-book/"/>
+    <id>http://hanwen.me/2018/12/26/recommend-book/</id>
+    <published>2018-12-26T12:19:44.000Z</published>
+    <updated>2018-12-26T12:27:56.134Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/images/bookbackage.png" alt="Alt text"><br>记录一些读过的书籍，都颇有感触。</p><p>或许以前读书的境界还没够，还未达到一定的水准。最近每每看书都有很多感慨，读书能让你见识更多。作者把自己的亲身实践，通过文字的形式向我们展示，透过这些文字我们可以直接去借鉴。</p><p>《战后日本经济史》，这本书是讲日本是如何崛起的，其实我们现在的状况跟九几年的日本很相似，想想还未能为祖国做贡献，颇有无奈。<br><a id="more"></a><br>《不抱怨时间》《清单革命》，这两本书如何教你管理自己的时间，对于没有很强的自制力，非常适合，任务的完成总要有个轻重缓急，学会安排自己的时间，让自己过的更充实些。</p><p>《人类群星闪耀时》，讲述 13 个非常伟大的故事，在历史上总是有那么几个决定性的英雄人物，在任何时代都是存在的。成为英雄有时也就在那么一瞬间。</p><p> 《当下的力量》，讲述如何提高自己，文字是字字铿锵有力，里面有讲冥想的部分确实不错，让我们学会接受不完美的自己，感受自己的存在。世界上有六十多亿人口，每个人都有自己的活法，不要试图去效仿别人，做独一无二的自己。</p><p>下面还有几本，还没有看完，等看完之后在来更新。<br>《个人印象》<br>《终身成长：重新定义成功的思维模式》<br>《昨日的世界》<br>《终身成长》</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/images/bookbackage.png&quot; alt=&quot;Alt text&quot;&gt;&lt;br&gt;记录一些读过的书籍，都颇有感触。&lt;/p&gt;
+&lt;p&gt;或许以前读书的境界还没够，还未达到一定的水准。最近每每看书都有很多感慨，读书能让你见识更多。作者把自己的亲身实践，通过文字的形式向我们展示，透过这些文字我们可以直接去借鉴。&lt;/p&gt;
+&lt;p&gt;《战后日本经济史》，这本书是讲日本是如何崛起的，其实我们现在的状况跟九几年的日本很相似，想想还未能为祖国做贡献，颇有无奈。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="读书" scheme="http://hanwen.me/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="闲聊" scheme="http://hanwen.me/tags/%E9%97%B2%E8%81%8A/"/>
+    
+      <category term="笔记" scheme="http://hanwen.me/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="文学" scheme="http://hanwen.me/tags/%E6%96%87%E5%AD%A6/"/>
+    
+      <category term="成长" scheme="http://hanwen.me/tags/%E6%88%90%E9%95%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>投资理财的一些看法</title>
@@ -670,35 +700,6 @@ sqoop import --connect jdbc:mysql://192.168.1.10:3306/hadoop --username root --p
       <category term="大数据" scheme="http://hanwen.me/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
       <category term="Sqoop" scheme="http://hanwen.me/tags/Sqoop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hive UDF 的使用</title>
-    <link href="http://hanwen.me/2017/12/10/hive-udf/"/>
-    <id>http://hanwen.me/2017/12/10/hive-udf/</id>
-    <published>2017-12-10T12:41:08.000Z</published>
-    <updated>2017-12-10T12:48:52.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>首先要继承<code>org.apache.hadoop.hive.ql.exec.UDF</code>类实现 <code>evaluate</code></p><p>自定义函数调用过程：</p><ol><li><p>添加jar包（在hive命令行里面执行)  </p><p> <code>hive&gt; add jar /root/NUDF.jar;</code></p></li><li><p>创建临时函数  </p><p> <code>hive&gt; create temporary function getNation as &#39;com.hw.hive.udf.NationUDF&#39;;</code></p><a id="more"></a></li><li><p>调用   </p><p> <code>hive&gt; select id, name, getNation(nation) from beauty;</code></p></li><li><p>将查询结果保存到HDFS中  </p><p> <code>hive&gt; create table result row format delimited fields terminated by &#39;\t&#39; as select * from beauty order by id desc;</code><br> <code>hive&gt; select id, getAreaName(id) as name from tel_rec;</code></p><p> <code>create table result row format delimited fields terminated by &#39;\t&#39; as select id, getNation(nation) from beauties;</code></p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;首先要继承&lt;code&gt;org.apache.hadoop.hive.ql.exec.UDF&lt;/code&gt;类实现 &lt;code&gt;evaluate&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;自定义函数调用过程：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;添加jar包（在hive命令行里面执行)  &lt;/p&gt;
-&lt;p&gt; &lt;code&gt;hive&amp;gt; add jar /root/NUDF.jar;&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;创建临时函数  &lt;/p&gt;
-&lt;p&gt; &lt;code&gt;hive&amp;gt; create temporary function getNation as &amp;#39;com.hw.hive.udf.NationUDF&amp;#39;;&lt;/code&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="大数据" scheme="http://hanwen.me/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-      <category term="Hive" scheme="http://hanwen.me/tags/Hive/"/>
     
   </entry>
   
