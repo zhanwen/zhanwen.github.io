@@ -254,6 +254,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/24/rsync-application-practice/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hanwen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抬头看路,低头干活">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/24/rsync-application-practice/" itemprop="url">rsync应用实例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T22:43:24+08:00">
+                2017-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/24/rsync-application-practice/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/24/rsync-application-practice/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>ssh方式</p>
+<pre><code>1、rsync -avL test1/ www@192.168.238.0.101:/tmp/test2/
+
+2、rsync -avL 192.168..0.101:/tmp/test2/ ./test3/
+</code></pre><p>3、由于需要输入密码所以不合适写到脚本中，但可以通过创建密钥对，让两台机器产生信任关系从而不用输入密码</p>
+<pre><code>ssh-keygen -t rsa
+连续回车
+ssh-copy-id id_rsa.pub hostip
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/24/rsync-application-practice/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/23/linux-rsync-note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1511,147 +1654,6 @@ vs0不限定包的长度
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/18/linux-variable-study/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hanwen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="抬头看路,低头干活">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/18/linux-variable-study/" itemprop="url">linux下的变量以及系统和个人环境变量的配置文件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-18T22:06:28+08:00">
-                2017-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/18/linux-variable-study/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/18/linux-variable-study/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>1、系统变量名都是大写，echo可以查看变量名<br>2、env可以列出当前用户的所有环境变量以及用户自定义全局变量<br>3、set命令可以把所有变量列出来包括系统的和自定义的全局变量以及当前shell自定义变量</p>
-</blockquote>
-<p>linux下设置自定义变量规则：执行#bash进入当前用户的子shell，可以用<font color="red">pstree</font>查看</p>
-<blockquote>
-<p>(1) 格式为“a=b”，其中a为变量名，b为变量的内容，等号两边不能有空格<br>(2) 变量名只能有英、数字以及下划线组成，而且不能以数字开头<br>(3) 当变量内容带有特殊字符（如空格）时，需要加上单引号<br>(4) 如果变量内容中需要用到其他命令运行结果则可以使用反引号<br>(5) 变量内容可以累加到其他变量的内容，需要加双引号</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/18/linux-variable-study/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1706,7 +1708,7 @@ vs0不限定包的长度
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1728,7 +1730,7 @@ vs0不限定包的长度
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -254,6 +254,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/12/mongodb-replication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hanwen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="抬头看路,低头干活">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/12/mongodb-replication/" itemprop="url">Mongodb副本集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T22:33:24+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/12/mongodb-replication/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/12/mongodb-replication/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>副本集就是有自动故障恢复功能的主从集群。主从集群和副本集最大的区别就是副本集没有固定的“主节点”；整个集群会选出一个“主节点”，当其挂掉后，又在剩下的从节点中选中其他节点为“主节点”，副本集总有一个活跃点(primary)和一个或多个备份节点(secondary)。下面以三个节点为例</p>
+<pre><code>//节点1：
+HOST：localhost:10001
+Log File：D:\mongodb\logs\node1\logs.txt
+Data File：D:\mongodb\dbs\node1
+
+//节点2：
+HOST：localhost:10002
+Log File：D:\mongodb\logs\node2\logs.txt
+Data File：D:\mongodb\dbs\node2
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/12/mongodb-replication/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/12/mongodb-master-slave/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1519,155 +1664,6 @@ show tables；
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hanwen.me/2017/11/05/oracle-simple-funcation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hanwen">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="抬头看路,低头干活">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/05/oracle-simple-funcation/" itemprop="url">Oracle单行函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-05T22:18:33+08:00">
-                2017-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/11/05/oracle-simple-funcation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/05/oracle-simple-funcation/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>字符函数</p>
-<pre><code>lower(&apos;Hello World&apos;) 小写
-upper(&apos;Hello World&apos;) 大写
-initcap(&apos;hello world&apos;) 首字母大写
-substr(a,b) 从a中，第b位开始取子串
-substr(a,b,c) 从a中，第b位开始取,取c位
-length 字符数  lengthb 字节数
-instr(a,b) 在a中，查找b
-lpad 左填充  rpad 右填充。
-    lpad(&apos;abcd&apos;,10,&apos;@&apos;) //@@@@@@@@@@abcd 
-    rpad(&apos;abcd&apos;,10,&apos;@&apos;) //abcd@@@@@@@@@@
-trim 去掉前后指定的字符
-    trim(&apos;H&apos; from &apos;Hello World&apos;)
-replace 替换 replace(&apos;Hello World&apos;,&apos;l&apos;,&apos;*&apos;)
-</code></pre>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/05/oracle-simple-funcation/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1722,7 +1718,7 @@ replace 替换 replace(&apos;Hello World&apos;,&apos;l&apos;,&apos;*&apos;)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">87</span>
+                  <span class="site-state-item-count">88</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1744,7 +1740,7 @@ replace 替换 replace(&apos;Hello World&apos;,&apos;l&apos;,&apos;*&apos;)
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">85</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
