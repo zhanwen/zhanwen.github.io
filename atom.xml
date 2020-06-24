@@ -442,30 +442,6 @@
   </entry>
   
   <entry>
-    <title>去除Myeclipse中的拼写检查</title>
-    <link href="http://hanwen.me/2017/12/27/get-rid-of-myeclipse-spell-wrong/"/>
-    <id>http://hanwen.me/2017/12/27/get-rid-of-myeclipse-spell-wrong/</id>
-    <published>2017-12-27T14:47:58.000Z</published>
-    <updated>2017-12-27T14:51:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>myeclipse</code> -&gt; <code>proferences</code> -&gt; <code>general</code> -&gt; <code>editor</code> -&gt; <code>text editors</code> -&gt; <code>spelling</code>  </p><p>然后把<code>enable spell checking</code> 这行对号去掉就行了。  </p><p>改变字体在，<code>colors and fonts</code> -&gt; <code>basic</code> -&gt; <code>text font</code> 选择<code>edit</code>，然后修改自己喜欢的字体和大小即可。  </p><a id="more"></a><p>修改快捷键<br><code>myeclipse</code> -&gt; <code>proferences</code> -&gt; <code>key</code> 然后搜索<code>content assist</code> ，按住<code>alt + /</code>  </p><p><code>ctrl + shift + F</code> 是格式化  </p><p>如何改变<code>jsp</code>里面的编码格式，<br>在项目工程上面右击，<code>proferences</code>-&gt;<code>myeclipse</code>-&gt;<code>Resource</code>，在里面更改编码格式，也可以在<code>winows</code>-&gt;<code>proferences</code>里面进行更改。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;code&gt;myeclipse&lt;/code&gt; -&amp;gt; &lt;code&gt;proferences&lt;/code&gt; -&amp;gt; &lt;code&gt;general&lt;/code&gt; -&amp;gt; &lt;code&gt;editor&lt;/code&gt; -&amp;gt; &lt;code&gt;text editors&lt;/code&gt; -&amp;gt; &lt;code&gt;spelling&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;然后把&lt;code&gt;enable spell checking&lt;/code&gt; 这行对号去掉就行了。  &lt;/p&gt;
-&lt;p&gt;改变字体在，&lt;code&gt;colors and fonts&lt;/code&gt; -&amp;gt; &lt;code&gt;basic&lt;/code&gt; -&amp;gt; &lt;code&gt;text font&lt;/code&gt; 选择&lt;code&gt;edit&lt;/code&gt;，然后修改自己喜欢的字体和大小即可。  &lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Myeclipse" scheme="http://hanwen.me/tags/Myeclipse/"/>
-    
-      <category term="实用" scheme="http://hanwen.me/tags/%E5%AE%9E%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
     <title>hadoop-spark-hbase集群搭建</title>
     <link href="http://hanwen.me/2017/12/27/hadoop-spark-zookeeper-hbase-cluster/"/>
     <id>http://hanwen.me/2017/12/27/hadoop-spark-zookeeper-hbase-cluster/</id>
@@ -553,6 +529,30 @@
       <category term="Mysql" scheme="http://hanwen.me/tags/Mysql/"/>
     
       <category term="集群" scheme="http://hanwen.me/tags/%E9%9B%86%E7%BE%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>去除Myeclipse中的拼写检查</title>
+    <link href="http://hanwen.me/2017/12/27/get-rid-of-myeclipse-spell-wrong/"/>
+    <id>http://hanwen.me/2017/12/27/get-rid-of-myeclipse-spell-wrong/</id>
+    <published>2017-12-27T14:47:58.000Z</published>
+    <updated>2017-12-27T14:51:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>myeclipse</code> -&gt; <code>proferences</code> -&gt; <code>general</code> -&gt; <code>editor</code> -&gt; <code>text editors</code> -&gt; <code>spelling</code>  </p><p>然后把<code>enable spell checking</code> 这行对号去掉就行了。  </p><p>改变字体在，<code>colors and fonts</code> -&gt; <code>basic</code> -&gt; <code>text font</code> 选择<code>edit</code>，然后修改自己喜欢的字体和大小即可。  </p><a id="more"></a><p>修改快捷键<br><code>myeclipse</code> -&gt; <code>proferences</code> -&gt; <code>key</code> 然后搜索<code>content assist</code> ，按住<code>alt + /</code>  </p><p><code>ctrl + shift + F</code> 是格式化  </p><p>如何改变<code>jsp</code>里面的编码格式，<br>在项目工程上面右击，<code>proferences</code>-&gt;<code>myeclipse</code>-&gt;<code>Resource</code>，在里面更改编码格式，也可以在<code>winows</code>-&gt;<code>proferences</code>里面进行更改。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;myeclipse&lt;/code&gt; -&amp;gt; &lt;code&gt;proferences&lt;/code&gt; -&amp;gt; &lt;code&gt;general&lt;/code&gt; -&amp;gt; &lt;code&gt;editor&lt;/code&gt; -&amp;gt; &lt;code&gt;text editors&lt;/code&gt; -&amp;gt; &lt;code&gt;spelling&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;然后把&lt;code&gt;enable spell checking&lt;/code&gt; 这行对号去掉就行了。  &lt;/p&gt;
+&lt;p&gt;改变字体在，&lt;code&gt;colors and fonts&lt;/code&gt; -&amp;gt; &lt;code&gt;basic&lt;/code&gt; -&amp;gt; &lt;code&gt;text font&lt;/code&gt; 选择&lt;code&gt;edit&lt;/code&gt;，然后修改自己喜欢的字体和大小即可。  &lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Myeclipse" scheme="http://hanwen.me/tags/Myeclipse/"/>
+    
+      <category term="实用" scheme="http://hanwen.me/tags/%E5%AE%9E%E7%94%A8/"/>
     
   </entry>
   
